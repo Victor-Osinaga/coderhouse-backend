@@ -58,8 +58,10 @@ class Contenedor{
   }
 }
 
-let alumno = new Contenedor('./alumnos.json')
-// alumno.save({name:"victor", apellido: "osinaga"})
+let producto = new Contenedor('./productos.txt')
+
+// producto.save({producto:"Lavarropas", precio: "15.60", tumbnail: "tumbnail 1"})
+
 function ejecutar(cb){
   setTimeout(() => {
     cb()
@@ -67,20 +69,20 @@ function ejecutar(cb){
 }
 
 ejecutar(()=>{
-  alumno.save({name:"victor", apellido: "osinaga"})
+  producto.save({producto:"Lavarropas", precio: "15.60", tumbnail: "tumbnail 1"})
 
   
   ejecutar(()=>{
-    alumno.save({name:"victor", apellido: "osinaga"})
+    producto.save({producto:"Cuadro", precio: "5.99", tumbnail: "tumbnail 2"})
     
     ejecutar(()=>{
-      alumno.save({name:"victor", apellido: "osinaga"})
+      producto.save({producto:"Silla", precio: "21.99", tumbnail: "tumbnail 3"})
       
       ejecutar(()=>{
-        alumno.save({name:"victor", apellido: "osinaga"})
+        producto.save({producto:"Lámpara", precio: "99.99", tumbnail: "tumbnail 4"})
         
         ejecutar(()=>{
-          alumno.getById(2)
+          producto.getById(2)
             .then((data)=>{
               console.log(data)
             }).catch((err)=>{
@@ -88,13 +90,13 @@ ejecutar(()=>{
             })
       
             ejecutar(()=>{
-              alumno.getAll()
+              producto.getAll()
                 .then((data)=>{
                   console.log(data)
                 })
       
                 ejecutar(()=>{
-                  alumno.deleteById(2)
+                  producto.deleteById(2)
                     .then((data)=>{
                       console.log('se elimino el registro')
                     }).catch((err)=>{
@@ -102,7 +104,7 @@ ejecutar(()=>{
                     })
       
                     ejecutar(()=>{
-                      alumno.deleteAll()
+                      producto.deleteAll()
                         .then((data)=>{
                           console.log('se elimino TODO')
                         }).catch((err)=>{
@@ -116,18 +118,3 @@ ejecutar(()=>{
     })
   })
 })
-
-
-// alumno.deleteById(3)
-// .then((data)=>{
-//   console.log('se elimino el registro')
-// }).catch((err)=>{
-//   console.log(err);
-// })
-
-// alumno.deleteAll()
-//   .then((data)=>{
-//     console.log('se elimino TODO')
-//   }).catch((err)=>{
-//     console.log(err);
-//   })
